@@ -1,2 +1,2 @@
-# sys-quiz
+# cli-quiz
 i dont like quizlet
