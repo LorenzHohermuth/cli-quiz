@@ -12,8 +12,7 @@ func DisplayMenu() {
 	fmt.Println("Please paste this in your Console at the Quizlet Learn Set Website")
 	fmt.Println("And paste the output into the Terminal here")
 	fmt.Println("\n" + GetFileContent("./scrapingScript.js"))
-	fmt.Println(ReadIn())
-
+	fmt.Println("")
 }
 
 func GetFileContent(path string) string {
@@ -34,9 +33,11 @@ func ReadIn() string {
 
 	for scanner.Scan() {
 		buffer.WriteString(scanner.Text())
+		if scanner.Text() == "" {
+			return buffer.String()
+		}
 	}
-	if err := scanner.Err(); err != nil {
-		panic(err)
-	}
+	err := scanner.Err()
+	Check(err)
 	return buffer.String()
 }
