@@ -2,10 +2,18 @@ package main
 
 import (
 	"fmt"
-	"github.com/lorenz/quiz/internal/word"
+	"net/http"
+	"github.com/lorenz/quiz/internal/routes"
 )
 
 func main() {
-	fmt.Println("Welcome to the cli quiz!")
-	word.display()
+	router := routes.NewRouter()
+
+	port := 8080
+	addr := fmt.Sprintf(":%d", port)
+	fmt.Printf("Server listening on http://localhost%s\n", addr)
+	err := http.ListenAndServe(addr, router)
+	if err != nil {
+		panic(err)
+	}
 }
