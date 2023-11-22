@@ -15,3 +15,7 @@ func CreatWord(index int, term string) Word {
 	keyValue := strings.Split(term, "=")
 	return Word{index, 0, keyValue[0], keyValue[1]}
 }
+
+func (w *Word) GetTerm() string {
+	return w.term
+}

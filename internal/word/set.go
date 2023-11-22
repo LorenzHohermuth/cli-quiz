@@ -19,3 +19,6 @@ func CreatSet(s string) (set Set) {
 	return Set{arr}
 }
 
+func (s Set) Get(i int) Word {
+	return s.terms[i]
+}
